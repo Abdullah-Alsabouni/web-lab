@@ -7,3 +7,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('Parola', validators=[DataRequired()])
     remember_me = BooleanField('Beni Hatırla')
     submit = SubmitField('Giriş Yap')
+    mail = StringField('Mail', validators=[DataRequired()])
+    send_mail = SubmitField('Send Mail')
+    #

@@ -22,6 +22,14 @@ def index():
 def about():
     return render_template('about.html', title='About')  # Yeni şablon dosyasını render et
 
+@app.route('/forget', methods=['GET', 'POST'])
+def forget_password():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Password reset requested for email {}'.format(form.mail.data))
+        return redirect(url_for('/index'))
+    return render_template('forget_password.html', title='Forgot Password', form=form)
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
