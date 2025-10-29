@@ -3,10 +3,11 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
-    username = StringField('Kullanıcı Adı', validators=[DataRequired()])
-    password = PasswordField('Parola', validators=[DataRequired()])
-    remember_me = BooleanField('Beni Hatırla')
-    submit = SubmitField('Giriş Yap')
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Sign In')
+
+class ForgetPasswordForm(FlaskForm):
     mail = StringField('Mail', validators=[DataRequired()])
-    send_mail = SubmitField('Send Mail')
-    #
+    submit = SubmitField('Send Mail')
