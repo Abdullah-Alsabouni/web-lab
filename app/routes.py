@@ -4,17 +4,17 @@ from app.forms import LoginForm
 from app.forms import ForgetPasswordForm
 
 
-@app.route('/')
+@app.route('/') # base page route
 @app.route('/index')
 def index():
-    user = {'username': 'Kagan'}
+    user = {'username': 'Abdullah'}
     posts = [
         {
             'author': {'username': 'Ahmet'},
             'body': 'Beautiful day in Samsun!'
         },
         {
-            'author': {'username': 'Hami'},
+            'author': {'username': 'Ayşe'},
             'body': 'The Avengers movie was so cool!'
         }
     ]
@@ -25,6 +25,8 @@ def index():
 def about():
     return render_template('about.html', title='About')
 
+# Yeni giriş rotası
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -33,6 +35,8 @@ def login():
             form.username.data, form.remember_me.data))
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
+
+# Yeni şifre unutma rotası
 
 @app.route('/forget_password', methods=['GET', 'POST'])
 def forget_password():
